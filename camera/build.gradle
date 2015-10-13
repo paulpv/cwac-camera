@@ -1,8 +1,26 @@
 apply plugin: 'com.android.library'
 
+archivesBaseName = 'paulpv-android-lib-cwac-camera'
+description = "CommonsWare Camera for Android"
+group = getArtifactGroup()
+version = getBuildRepoVersionName()
+ext.buildVersionCode = getBuildVersionCode()
+ext.buildVersionName = getBuildVersionName()
+
+ext.androidCompileSdkRevision = getAndroidCompileSdkRevision()
+ext.androidBuildToolsRevision = getAndroidBuildToolsRevision()
+ext.dependencyRevisionAndroidSupport = getDependencyAndroidSupportRevision()
+
 android {
-    compileSdkVersion 17
-    buildToolsVersion "19.1.0"
+    compileSdkVersion androidCompileSdkRevision
+    buildToolsVersion androidBuildToolsRevision
+
+    defaultConfig {
+        minSdkVersion 18
+        targetSdkVersion androidCompileSdkRevision
+        versionCode buildVersionCode
+        versionName buildVersionName
+    }
 
     sourceSets {
         main {
@@ -20,31 +38,21 @@ android {
     }
 }
 
-if (project.hasProperty('PUBLISH_GROUP_ID')) {
-    // from http://stackoverflow.com/a/19484146/115145
+apply plugin: 'maven'
 
-    android.libraryVariants.all { variant ->
-        def name = variant.buildType.name
-        if (name.equals(com.android.builder.core.BuilderConstants.DEBUG)) {
-            return; // Skip debug builds.
-        }
-        def task = project.tasks.create "jar${name.capitalize()}", Jar
-        task.dependsOn variant.javaCompile
-        task.from variant.javaCompile.destinationDir
-        task.baseName = "cwac-${PUBLISH_ARTIFACT_ID}"
-        task.version = PUBLISH_VERSION
-        task.exclude('com/commonsware/cwac/**/BuildConfig.**')
-    }
-
-    apply plugin: 'maven'
-
-    uploadArchives {
-        repositories.mavenDeployer {
-            pom.groupId = PUBLISH_GROUP_ID
-            pom.artifactId = PUBLISH_ARTIFACT_ID
-            pom.version = PUBLISH_VERSION
-
-            repository(url: LOCAL_REPO)
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            repository(url: 'http://build.pebblebee.com:8090/repository/internal/') {
+                authentication(
+                        userName: project.PEBBLEBEE_ARCHIVA_USERNAME,
+                        password: project.PEBBLEBEE_ARCHIVA_PASSWORD)
+            }
+            snapshotRepository(url: 'http://build.pebblebee.com:8090/repository/snapshots/') {
+                authentication(
+                        userName: project.PEBBLEBEE_ARCHIVA_USERNAME,
+                        password: project.PEBBLEBEE_ARCHIVA_PASSWORD)
+            }
         }
     }
 }
