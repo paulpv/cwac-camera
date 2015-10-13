@@ -115,7 +115,7 @@ public class CameraFragment extends SherlockFragment {
   }
 
   /**
-   * Call this (or override getHost()) to supply the
+   * Call this (or override getCameraHost()) to supply the
    * CameraHost used for most of the detailed interaction
    * with the camera.
    * 
