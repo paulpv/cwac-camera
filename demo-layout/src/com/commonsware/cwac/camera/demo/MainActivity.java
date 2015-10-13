@@ -14,15 +14,16 @@
 
 package com.commonsware.cwac.camera.demo;
 
+import android.app.Activity;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 
 import com.commonsware.cwac.camera.CameraHost;
 import com.commonsware.cwac.camera.CameraHostProvider;
 import com.commonsware.cwac.camera.SimpleCameraHost;
 
 public class MainActivity
-        extends AppCompatActivity
+        //extends AppCompatActivity
+        extends Activity
         implements CameraHostProvider {
     private DemoCameraFragment current = null;
 
