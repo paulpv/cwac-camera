@@ -1,9 +1,10 @@
 /***
   Copyright (c) 2013 CommonsWare, LLC
+
   Licensed under the Apache License, Version 2.0 (the "License"); you may
   not use this file except in compliance with the License. You may obtain
   a copy of the License at
-  http://www.apache.org/licenses/LICENSE-2.0
+    http://www.apache.org/licenses/LICENSE-2.0
   Unless required by applicable law or agreed to in writing, software
   distributed under the License is distributed on an "AS IS" BASIS,
   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -15,29 +16,28 @@ package com.commonsware.cwac.camera.demo;
 
 import android.app.Activity;
 import android.os.Bundle;
-
 import com.commonsware.cwac.camera.CameraHost;
 import com.commonsware.cwac.camera.CameraHostProvider;
 import com.commonsware.cwac.camera.SimpleCameraHost;
 
 public class MainActivity extends Activity implements
-        CameraHostProvider {
-    private DemoCameraFragment current=null;
+				CameraHostProvider {
+	private DemoCameraFragment current = null;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_main);
+		setContentView(R.layout.activity_main);
 
-        current=new DemoCameraFragment();
+		current = new DemoCameraFragment();
 
-        getFragmentManager().beginTransaction()
-                .replace(R.id.container, current).commit();
-    }
+		getFragmentManager().beginTransaction()
+						.replace(R.id.container, current).commit();
+	}
 
-    @Override
-    public CameraHost getCameraHost() {
-        return (new SimpleCameraHost(this));
-    }
+	@Override
+	public CameraHost getCameraHost() {
+		return (new SimpleCameraHost(this));
+	}
 }
