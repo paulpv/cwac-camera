@@ -21,7 +21,7 @@ import com.commonsware.cwac.camera.CameraHostProvider;
 import com.commonsware.cwac.camera.SimpleCameraHost;
 
 public class MainActivity extends Activity implements
-	  CameraHostProvider {
+    CameraHostProvider {
   private DemoCameraFragment current=null;
 
   @Override
