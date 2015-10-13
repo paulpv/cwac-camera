@@ -16,16 +16,14 @@ allprojects {
     repositories {
         jcenter()
         maven {
-            //url 'http://build.pebblebee.com:8090/repository/snapshots/'
-            url 'http://jenkins-mobile.local:8090/repository/snapshots/'
+            url project.PEBBLEBEE_ARCHIVA_SERVER_SNAPSHOTS
             credentials {
                 username project.PEBBLEBEE_ARCHIVA_USERNAME
                 password project.PEBBLEBEE_ARCHIVA_PASSWORD
             }
         }
         maven {
-            //url 'http://build.pebblebee.com:8090/repository/internal/'
-            url 'http://jenkins-mobile.local:8090/repository/internal/'
+            url project.PEBBLEBEE_ARCHIVA_SERVER_INTERNAL
         }
         mavenLocal()
     }

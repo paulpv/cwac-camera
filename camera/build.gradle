@@ -43,12 +43,12 @@ apply plugin: 'maven'
 uploadArchives {
     repositories {
         mavenDeployer {
-            repository(url: 'http://build.pebblebee.com:8090/repository/internal/') {
+            repository(url: project.PEBBLEBEE_ARCHIVA_SERVER_INTERNAL) {
                 authentication(
                         userName: project.PEBBLEBEE_ARCHIVA_USERNAME,
                         password: project.PEBBLEBEE_ARCHIVA_PASSWORD)
             }
-            snapshotRepository(url: 'http://build.pebblebee.com:8090/repository/snapshots/') {
+            snapshotRepository(url: project.PEBBLEBEE_ARCHIVA_SERVER_SNAPSHOTS) {
                 authentication(
                         userName: project.PEBBLEBEE_ARCHIVA_USERNAME,
                         password: project.PEBBLEBEE_ARCHIVA_PASSWORD)
