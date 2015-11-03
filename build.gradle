@@ -15,16 +15,6 @@ buildscript {
 allprojects {
     repositories {
         jcenter()
-        maven {
-            url project.PEBBLEBEE_ARCHIVA_SERVER_SNAPSHOTS
-            credentials {
-                username project.PEBBLEBEE_ARCHIVA_USERNAME
-                password project.PEBBLEBEE_ARCHIVA_PASSWORD
-            }
-        }
-        maven {
-            url project.PEBBLEBEE_ARCHIVA_SERVER_INTERNAL
-        }
         mavenLocal()
     }
 }
