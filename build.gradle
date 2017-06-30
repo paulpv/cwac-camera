@@ -5,10 +5,15 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:1.3.1'
-
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
+
+        /**
+         * Updates:
+         *  http://developer.android.com/tools/revisions/gradle-plugin.html
+         *  http://tools.android.com/tech-docs/new-build-system
+         */
+        classpath 'com.android.tools.build:gradle:2.3.3'
     }
 }
 
@@ -23,26 +28,6 @@ allprojects {
 ext.BUILD_VERSION_INFO_REGEX = /^(\d+\.\d+(?:\.\d+)?\.(\d+))(?:-\((\d+(?:_\d+)?(?:-SNAPSHOT)?)\))?$/
 ext.BUILD_VERSION_DEFAULT = "0.0.1"
 ext.BUILD_VERSION_INFO_DEFAULT = BUILD_VERSION_DEFAULT + "-SNAPSHOT"
-
-def getAndroidCompileSdkRevision() {
-    return 23
-}
-
-/**
- * Updates:
- *  Android SDK Manager
- */
-def getAndroidBuildToolsRevision() {
-    return '23.0.1'
-}
-
-/**
- * Updates:
- *  https://developer.android.com/tools/support-library/index.html#revisions
- */
-def getDependencyAndroidSupportRevision() {
-    return '23.0.1'
-}
 
 /**
  * Uses project properties to determine if the build should be signed. A project with non-null KEY_ALIAS, KEY_PASSWORD, KEYSTORE, and KEYSTORE_PASSWORD properties is considered a signed build.
@@ -123,10 +108,6 @@ def getBuildRepoVersionName() {
  * Exposes local methods as properties for other scripts to access this scripts' functionality
  */
 ext {
-    getAndroidCompileSdkRevision = this.&getAndroidCompileSdkRevision
-    getAndroidBuildToolsRevision = this.&getAndroidBuildToolsRevision
-    getDependencyAndroidSupportRevision = this.&getDependencyAndroidSupportRevision
-
     getIsSignedBuild = this.&getIsSignedBuild
     getArtifactGroup = this.&getArtifactGroup
     getBuildVersionInfo = this.&getBuildVersionInfo
