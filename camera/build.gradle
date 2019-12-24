@@ -9,7 +9,7 @@ ext.buildVersionName = getBuildVersionName()
 
 android {
     compileSdkVersion 28
-    buildToolsVersion "26.0.3"
+    //buildToolsVersion "28.0.3"
 
     defaultConfig {
         minSdkVersion 18
