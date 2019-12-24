@@ -2,6 +2,7 @@
 
 buildscript {
     repositories {
+        google()
         jcenter()
     }
     dependencies {
@@ -13,12 +14,13 @@ buildscript {
          *  http://developer.android.com/tools/revisions/gradle-plugin.html
          *  http://tools.android.com/tech-docs/new-build-system
          */
-        classpath 'com.android.tools.build:gradle:2.3.3'
+        classpath 'com.android.tools.build:gradle:3.5.3'
     }
 }
 
 allprojects {
     repositories {
+        google()
         jcenter()
         mavenLocal()
     }

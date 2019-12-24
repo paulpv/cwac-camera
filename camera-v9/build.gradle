@@ -9,10 +9,10 @@ repositories {
 }
 
 dependencies {
-    debugCompile project(':camera')
-    releaseCompile 'com.commonsware.cwac:camera:0.6.+'
-    compile 'com.android.support:support-v4:18.0.+'
-    compile 'com.actionbarsherlock:actionbarsherlock:4.4.0@aar'
+    debugImplementation project(':camera')
+    releaseImplementation 'com.commonsware.cwac:camera:0.6.+'
+    implementation 'com.android.support:support-v4:28.0.0'
+    implementation 'com.actionbarsherlock:actionbarsherlock:4.4.0@aar'
 }
 
 android {
@@ -41,7 +41,7 @@ if (project.hasProperty('PUBLISH_GROUP_ID')) {
     android.libraryVariants.all { variant ->
         def name = variant.buildType.name
         if (name.equals(com.android.builder.core.BuilderConstants.DEBUG)) {
-            return; // Skip debug builds.
+            return // Skip debug builds.
         }
         def task = project.tasks.create "jar${name.capitalize()}", Jar
         task.dependsOn variant.javaCompile
